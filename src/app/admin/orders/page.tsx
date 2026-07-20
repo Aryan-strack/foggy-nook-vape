@@ -17,7 +17,9 @@ const activeStatus: OrderStatus | "all" =
     : "all";
 
   let query = supabase.from("orders").select("*").order("created_at", { ascending: false });
-  if (activeStatus !== "all") query = query.eq("status", activeStatus);
+  if (activeStatus !== "all") {
+  query = query.eq("status", activeStatus as OrderStatus);
+}
 
   const { data: orders } = await query;
 
