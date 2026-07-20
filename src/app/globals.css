@@ -1,0 +1,84 @@
+@import "tailwindcss";
+@config "../../tailwind.config.ts";
+@plugin "tailwindcss-animate";
+
+:root {
+  --font-cormorant: "Cormorant Garamond", serif;
+  --font-manrope: "Manrope", sans-serif;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0b0b0b;
+  color: #ffffff;
+  font-family: var(--font-manrope);
+}
+
+::selection {
+  background-color: #d4af37;
+  color: #0b0b0b;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0b0b0b;
+}
+::-webkit-scrollbar-thumb {
+  background: #d4af37;
+  border-radius: 8px;
+}
+
+@layer components {
+  /* Reusable glassmorphism card */
+  .glass-card {
+    @apply bg-glass backdrop-blur-xl border border-gold/15 rounded-2xl;
+  }
+
+  /* Gold outline hover effect used across buttons/cards */
+  .gold-hover {
+    @apply transition-all duration-300 hover:border-gold hover:shadow-gold;
+  }
+
+  /* Section heading treatment — luxury serif with gold eyebrow */
+  .section-eyebrow {
+    @apply font-body text-xs uppercase tracking-[0.3em] text-gold mb-3;
+  }
+
+  .section-title {
+    @apply font-display text-4xl md:text-5xl font-medium text-white;
+  }
+
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-gold-gradient bg-[length:200%_100%]
+      text-black font-semibold px-8 py-3.5 transition-all duration-500 hover:bg-right hover:shadow-gold;
+  }
+
+  .btn-outline-gold {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-gold/40 text-gold
+      font-semibold px-8 py-3.5 transition-all duration-300 hover:bg-gold hover:text-black hover:shadow-gold;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #ffffff !important;
+  }
+  .invoice-print {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+}
