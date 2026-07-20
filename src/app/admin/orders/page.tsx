@@ -11,7 +11,10 @@ const STATUS_TABS: (OrderStatus | "all")[] = ["all", "pending", "confirmed", "pr
 export default async function AdminOrdersPage({ searchParams }: { searchParams: Promise<{ status?: string }> }) {
   const { status } = await searchParams;
   const supabase = await createClient();
-  const activeStatus = (status as OrderStatus) || "all";
+const activeStatus: OrderStatus | "all" =
+  status && STATUS_TABS.includes(status as OrderStatus | "all")
+    ? (status as OrderStatus)
+    : "all";
 
   let query = supabase.from("orders").select("*").order("created_at", { ascending: false });
   if (activeStatus !== "all") query = query.eq("status", activeStatus);

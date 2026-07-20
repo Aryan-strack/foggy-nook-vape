@@ -14,7 +14,8 @@ interface PlaceOrderResult {
 export async function placeOrder(formValues: CheckoutFormValues, cartItems: CartItem[]): Promise<PlaceOrderResult> {
   const parsed = checkoutSchema.safeParse(formValues);
   if (!parsed.success) {
-    return { success: false, error: parsed.error.errors[0]?.message || "Invalid order details" };
+    const fieldErrors = parsed.error.issues;
+    return { success: false, error: fieldErrors[0]?.message || "Invalid order details" };
   }
 
   if (!cartItems.length) {
