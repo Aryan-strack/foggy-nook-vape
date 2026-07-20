@@ -45,8 +45,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { product } = data;
 
   return {
-    title: product.meta_title || product.name,
-    description: product.meta_description || product.description?.slice(0, 160),
+    title: (product as any).meta_title || product.name,
+    description: (product as any).meta_description || product.description?.slice(0, 160),
     openGraph: {
       title: product.name,
       description: product.description?.slice(0, 160),
