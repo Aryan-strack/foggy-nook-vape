@@ -16,9 +16,9 @@ const VALUES = [
 
 // Placeholder lifestyle imagery — swap these for your own product/store photography.
 const GALLERY = [
-  "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=900",
-  "https://images.unsplash.com/photo-1527061011665-3f7c8b1f1a1e?w=900",
-  "https://images.unsplash.com/photo-1517705600644-1a53a1503b0f?w=900",
+  "/store1.jpeg",
+  "/store2.jpeg",
+  "/store3.jpeg",
 ];
 
 export default function AboutPage() {
@@ -27,7 +27,7 @@ export default function AboutPage() {
       {/* Hero */}
       <section className="relative h-[60vh] min-h-[420px] flex items-end overflow-hidden">
         <Image
-          src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1600"
+          src="/vape.jpg"
           alt="Foggy Nook store"
           fill
           priority
